@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen w-full">
         <Navbar />
         <Routes>
           <Route path="/" element={<PostList />} />

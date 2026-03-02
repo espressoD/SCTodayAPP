@@ -34,7 +34,7 @@ function PostList() {
 
   return (
     <div className="min-h-screen bg-[#FDFCFA]">
-      <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
         <div className="absolute inset-0 opacity-10">
           <svg className="absolute top-10 right-10 w-40 h-40" viewBox="0 0 100 100" fill="none">
             <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5"/>
