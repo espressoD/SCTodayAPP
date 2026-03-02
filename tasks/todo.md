@@ -135,23 +135,85 @@
 
 ---
 
-## 🎨 Phase 6: UI/UX Enhancement
+## 🎨 Phase 6: UI/UX Enhancement (Botanical Theme)
 
-- [ ] **Responsive Design**
-  - Mobile first approach
-  - Tablet & desktop breakpoints
-  - Test on different screen sizes
+### 6.1 Setup Theme Foundation
+- [ ] **Update index.css dengan warm color palette**
+  - Define CSS custom properties untuk warna cokelat, beige, hijau zaitun
+  - Import Google Fonts (serif untuk heading)
+  - Reset default styles dengan theme baru
+  - Create utility classes untuk botanical theme
 
-- [ ] **Styling dengan Tailwind**
-  - Consistent color scheme
-  - Typography hierarchy
-  - Spacing & padding
-  - Hover & active states
+### 6.2 PostCard Component Enhancement
+- [ ] **Update PostCard.jsx dengan botanical design**
+  - Ganti gradient blue/purple ke warm browns/olive
+  - Tambah botanical SVG decoration di corner
+  - Update badge colors ke earth tones
+  - Implement subtle hover effects (lift & scale)
+  - Add decorative border patterns
+  - Typography: serif heading, sans-serif body
+  - Alternate card backgrounds (cream/sage green)
+  - Smooth transitions untuk semua interactions
 
-- [ ] **Loading & Error States**
-  - Loading spinner/skeleton
-  - Error message display
-  - Empty state (if no posts)
+### 6.3 Loading Component Enhancement
+- [ ] **Update Loading.jsx dengan botanical theme**
+  - Ganti spinner colors ke earth tones
+  - Add botanical icon/leaf animation
+  - Update loading text styling
+  - Implement shimmer effect dengan warm colors
+  - Add decorative elements untuk loading state
+
+### 6.4 Navbar Component Enhancement
+- [ ] **Update Navbar.jsx dengan scholarly aesthetic**
+  - Background color: warm beige/cream
+  - Logo: botanical book icon (SVG)
+  - Typography: serif untuk "ScholarToday"
+  - Subtle shadow dengan warm tones
+  - Update active state colors
+  - Add decorative line/border botanical pattern
+  - Smooth hover transitions
+
+### 6.5 PostList Page Enhancement
+- [ ] **Update PostList.jsx dengan hero section & layout**
+  - Hero section dengan botanical illustration background
+  - Update gradient ke warm earth tones
+  - Search bar dengan botanical icon
+  - Results counter dengan better styling
+  - Grid layout dengan proper spacing
+  - Add decorative dividers
+  - Implement staggered animation untuk cards
+  - Empty state dengan botanical illustration
+  - Scroll-to-top button dengan botanical icon
+
+### 6.6 PostDetail Page Enhancement
+- [ ] **Update PostDetail.jsx dengan reading experience**
+  - Hero banner dengan botanical pattern
+  - Typography untuk better readability (serif heading, line-height)
+  - Author card dengan botanical decoration
+  - Navigation buttons dengan botanical icons
+  - Content area dengan paper texture/subtle background
+  - Add decorative chapter dividers
+  - Metadata badges dengan earth tones
+  - Back button dengan botanical arrow
+  - Related posts section (optional)
+
+### 6.7 Final Polish & Testing
+- [ ] **Responsive testing di semua breakpoints**
+  - Mobile (320px - 768px)
+  - Tablet (768px - 1024px)
+  - Desktop (1024px+)
+
+- [ ] **Micro-interactions testing**
+  - Test semua hover effects
+  - Test smooth transitions
+  - Test loading animations
+  - Test scroll behaviors
+
+- [ ] **Accessibility check**
+  - Color contrast ratios
+  - Keyboard navigation
+  - Screen reader friendly
+  - Focus states visible
 
 ---
 
