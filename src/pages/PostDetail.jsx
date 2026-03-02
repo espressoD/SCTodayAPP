@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Loading from '../components/Loading';
-import { getPostById, getUserById } from '../services/api';
+import { getPostById} from '../services/api';
 
-/**
- * PostDetail Page - Botanical Theme
- * Display full details of a single post with scholarly reading experience
- */
 function PostDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,14 +22,6 @@ function PostDetail() {
         const postData = await getPostById(id);
         setPost(postData);
 
-        // Fetch user data (optional enhancement)
-        try {
-          const userData = await getUserById(postData.userId);
-          setUser(userData);
-        } catch (userError) {
-          console.warn('Failed to fetch user data:', userError);
-          // Continue without user data
-        }
       } catch (err) {
         setError(err.message || 'Failed to fetch post');
         console.error('Error fetching post:', err);
@@ -47,7 +35,6 @@ function PostDetail() {
     }
   }, [id]);
 
-  // Loading State
   if (loading) {
     return (
       <div className="min-h-screen bg-[#FDFCFA]">
@@ -56,7 +43,6 @@ function PostDetail() {
     );
   }
 
-  // Error State
   if (error) {
     return (
       <div className="min-h-screen bg-[#FDFCFA] flex items-center justify-center p-4">
@@ -99,12 +85,9 @@ function PostDetail() {
     );
   }
 
-  // Success State - Display Post
   return (
     <div className="min-h-screen bg-[#FDFCFA]">
-      {/* Header with Botanical Pattern */}
-      <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden">
-        {/* Decorative background pattern */}
+      <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
         <div className="absolute inset-0 opacity-10">
           <svg className="absolute top-5 right-10 w-32 h-32" viewBox="0 0 100 100" fill="none">
             <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5"/>
@@ -113,33 +96,17 @@ function PostDetail() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
-          
-          
-          <div className="flex items-center gap-3 mb-4">
-            <span className="bg-[#FBF8F3]/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-[#FBF8F3]/30">
-              Post #{post.id}
-            </span>
-            {user && (
-              <span className="bg-[#FBF8F3]/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-[#FBF8F3]/30">
-                by {user.name}
-              </span>
-            )}
-          </div>
-          
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-2 capitalize leading-tight [text-shadow:_0_0_8px_rgba(255,255,255,4.9)]">
             {post.title}
           </h1>
         </div>
 
-        {/* Bottom wave decoration */}
         <div className="h-px bg-gradient-to-r from-transparent via-[#FBF8F3] to-transparent"></div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Post Content Card */}
         <article className="bg-[#FBF8F3] rounded-xl shadow-xl p-8 md:p-12 mb-8 border border-[#E5DFD3] relative overflow-hidden">
-          {/* Subtle paper texture background */}
           <div className="absolute inset-0 opacity-5 pointer-events-none">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -151,14 +118,12 @@ function PostDetail() {
             </svg>
           </div>
 
-          {/* Post Body */}
           <div className="relative">
             <p className="text-[#2C2416] leading-relaxed text-lg md:text-xl font-light" style={{ lineHeight: '2' }}>
               {post.body}
             </p>
           </div>
 
-          {/* Decorative divider */}
           <div className="my-8 flex items-center justify-center">
             <div className="flex gap-2">
               <div className="w-2 h-2 bg-[#8B6F47] rounded-full"></div>
@@ -167,7 +132,6 @@ function PostDetail() {
             </div>
           </div>
 
-          {/* Post Metadata */}
           <div className="pt-6 border-t border-[#E5DFD3]">
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 bg-[#F5E6D3] px-4 py-2 rounded-lg border border-[#E5DFD3]">
@@ -201,7 +165,6 @@ function PostDetail() {
         
         
 
-        {/* Navigation Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <Link
             to="/"

@@ -5,7 +5,7 @@ function Navbar() {
   const isHome = location.pathname === '/';
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#FBF8F3] shadow-lg border-b-2 border-[#E5DFD3]">
+    <nav className="sticky top-0 left-0 right-0 z-50 bg-[#FBF8F3] shadow-lg border-b-2 border-[#E5DFD3] w-full">
       <div className="h-1 bg-gradient-to-r from-[#8B6F47] via-[#6B7553] to-[#C4A57B]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
