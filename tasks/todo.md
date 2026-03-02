@@ -90,7 +90,7 @@
 
 ---
 
-## 🎨 Phase 3: Components Development
+## 🎨 Phase 3: Components Development ✅ COMPLETED
 
 - [ ] **PostCard Component** (Reusable)
   - Props: `post` (id, title, body)
@@ -108,7 +108,7 @@
 
 ---
 
-## 📄 Phase 4: Pages Development
+## 📄 Phase 4: Pages Development ✅ COMPLETED
 
 - [ ] **PostList Page** (`/`)
   - Fetch all posts from API
@@ -117,7 +117,7 @@
   - Loading state
   - Error handling
 
-- [ ] **PostDetail Page** (`/post/:id`)
+- [ ] **PostDetail Page** (`/post/:id`) ✅ COMPLETED
   - Fetch single post by ID
   - Display full content (title, body)
   - Optional: show userId
@@ -126,7 +126,7 @@
 
 ---
 
-## 🛣️ Phase 5: Routing
+## 🛣️ Phase 5: Routing ✅ COMPLETED
 
 - [ ] **Setup React Router in App.jsx**
   - Route `/` → PostList

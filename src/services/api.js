@@ -47,7 +47,7 @@ export const getPostById = async (id) => {
 };
 
 /**
- * Fetch user details by user ID (optional - for future enhancement)
+ * Fetch user details by user ID 
  * @param {number} userId - User ID
  * @returns {Promise<Object>} User object
  */
