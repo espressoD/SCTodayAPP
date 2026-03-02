@@ -1,6 +1,6 @@
 function Loading() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
+    <div className="flex flex-col items-center justify-center min-h-[400px] p-8" role="status" aria-live="polite" aria-label="Loading posts">
       <div className="relative">
         <div className="w-20 h-20 border-4 border-[#E5DFD3] border-t-[#8B6F47] rounded-full animate-spin"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -13,6 +13,7 @@ function Loading() {
             stroke="#5C4033" 
             viewBox="0 0 24 24"
             strokeWidth="2"
+            aria-hidden="true"
             >
               <path 
                 strokeLinecap="round" 
@@ -32,15 +33,15 @@ function Loading() {
       </div>
       
       <div className="mt-6 flex gap-3 opacity-30">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="#5C4033">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="#5C4033" aria-hidden="true">
           <circle cx="8" cy="8" r="1.5"/>
           <path d="M8 8L8 2M8 8L8 14M8 8L2 8M8 8L14 8" stroke="#5C4033" strokeWidth="0.5"/>
         </svg>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="#6B7553">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="#6B7553" aria-hidden="true">
           <circle cx="8" cy="8" r="1.5"/>
           <path d="M8 8L8 2M8 8L8 14M8 8L2 8M8 8L14 8" stroke="#6B7553" strokeWidth="0.5"/>
         </svg>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="#C4A57B">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="#C4A57B" aria-hidden="true">
           <circle cx="8" cy="8" r="1.5"/>
           <path d="M8 8L8 2M8 8L8 14M8 8L2 8M8 8L14 8" stroke="#C4A57B" strokeWidth="0.5"/>
         </svg>

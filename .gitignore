@@ -24,4 +24,3 @@ dist-ssr
 *.sw?
 AI_PROMPTS.md
 /tasks
-ApiTest.jsx

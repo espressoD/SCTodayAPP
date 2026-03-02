@@ -33,8 +33,8 @@ function PostCard({ post, index = 0 }) {
           <span className={`inline-block ${categoryColor} text-xs font-semibold px-4 py-1.5 rounded-full shadow-sm`}>
             Post #{post.id}
           </span>
-          <span className="text-xs text-[#8B8378] font-medium flex items-center gap-1">
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+          <span className="text-xs text-[#5C5346] font-medium flex items-center gap-1">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
             </svg>
             User {post.userId}
@@ -61,13 +61,14 @@ function PostCard({ post, index = 0 }) {
               stroke="currentColor" 
               viewBox="0 0 24 24"
               strokeWidth="2.5"
+              aria-hidden="true"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
 
-          <div className="flex items-center gap-1.5 text-xs text-[#8B8378]">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-1.5 text-xs text-[#5C5346]">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span className="font-medium">{Math.ceil(post.body.split(' ').length / 200)} min read</span>

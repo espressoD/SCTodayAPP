@@ -13,6 +13,7 @@ function Navbar() {
           <Link 
             to="/" 
             className="flex items-center gap-4 group"
+            aria-label="Navigate to home page"
           >
             <div className="relative">
               <div className="bg-gradient-to-br from-[#8B6F47] to-[#5C4033] p-3 rounded-xl group-hover:scale-105 transition-transform duration-300 shadow-md">
@@ -22,6 +23,7 @@ function Navbar() {
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path 
                     strokeLinecap="round" 
@@ -36,7 +38,7 @@ function Navbar() {
               <h1 className="text-2xl font-serif font-bold text-[#5C4033] group-hover:text-[#8B6F47] transition-colors duration-200">
                 ScholarToday
               </h1>
-              <p className="text-xs text-[#8B8378] font-medium tracking-wide">Scholarly Posts Collection</p>
+              <p className="text-xs text-[#5C5346] font-medium tracking-wide">Scholarly Posts Collection</p>
             </div>
           </Link>
         </div>
