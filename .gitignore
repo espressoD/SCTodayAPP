@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 AI_PROMPTS.md
+/tasks
+ApiTest.jsx
