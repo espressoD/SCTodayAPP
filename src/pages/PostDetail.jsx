@@ -8,7 +8,6 @@ function PostDetail() {
   const navigate = useNavigate();
   
   const [post, setPost] = useState(null);
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,13 +17,24 @@ function PostDetail() {
         setLoading(true);
         setError(null);
 
+        // Validate ID is a number between 1-100
+        const postId = parseInt(id, 10);
+        
+        if (isNaN(postId) || postId < 1 || postId > 100) {
+          setError('Invalid post ID. Please use a valid post number (1-100).');
+          setLoading(false);
+          return;
+        }
+
         // Fetch post data
-        const postData = await getPostById(id);
+        const postData = await getPostById(postId);
         setPost(postData);
 
       } catch (err) {
-        setError(err.message || 'Failed to fetch post');
-        console.error('Error fetching post:', err);
+        setError(err.message || 'Unable to load post. Please try again later.');
+        if (import.meta.env.DEV) {
+          console.error('Error fetching post:', err);
+        }
       } finally {
         setLoading(false);
       }

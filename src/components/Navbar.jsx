@@ -1,9 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-
   return (
     <nav className="sticky top-0 left-0 right-0 z-50 bg-[#FBF8F3] shadow-lg border-b-2 border-[#E5DFD3] w-full">
       <div className="h-1 bg-gradient-to-r from-[#8B6F47] via-[#6B7553] to-[#C4A57B]"></div>

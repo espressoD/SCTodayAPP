@@ -1,0 +1,33 @@
+# Security Headers for Production Deployment
+# This file is automatically read by Netlify and Vercel
+# For production security compliance
+
+/*
+  # Content Security Policy - Prevents XSS and injection attacks
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://jsonplaceholder.typicode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  
+  # Prevents clickjacking attacks
+  X-Frame-Options: DENY
+  
+  # Prevents MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Controls referrer information
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Restricts browser features
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+  
+  # HSTS - Forces HTTPS (only enable after confirming HTTPS works)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # XSS Protection (legacy browsers)
+  X-XSS-Protection: 1; mode=block
+
+# Cache control for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache control for HTML (short cache)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

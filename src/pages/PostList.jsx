@@ -87,7 +87,13 @@ function PostList() {
                     type="text"
                     placeholder="Search posts by title or content..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value.length <= 200) {
+                        setSearchTerm(value);
+                      }
+                    }}
+                    maxLength={200}
                     className="w-full px-6 py-4 pl-14 rounded-xl text-[#2C2416] placeholder-[#5C5346] bg-[#FBF8F3] focus:outline-none focus:ring-4 focus:ring-[#C4A57B]/50 transition-all shadow-xl border-2 border-[#E5DFD3]"
                     aria-label="Search posts by title or content"
                 />
