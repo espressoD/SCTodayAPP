@@ -30,8 +30,8 @@ dist-ssr
 *.sw?
 
 # Documentation (remove from repo, keep for local dev)
-AI_PROMPTS.md
-/tasks
+#AI_PROMPTS.md
+#/tasks
 
 # Security and sensitive files
 *.key
