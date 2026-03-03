@@ -4,16 +4,10 @@ import PostList from './pages/PostList';
 import PostDetail from './pages/PostDetail';
 import './App.css';
 
-/**
- * App Component - Main application with routing
- * Routes:
- * - / -> PostList (shows all posts)
- * - /post/:id -> PostDetail (shows single post detail)
- */
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen w-full">
         <Navbar />
         <Routes>
           <Route path="/" element={<PostList />} />
