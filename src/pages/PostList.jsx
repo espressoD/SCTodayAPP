@@ -8,6 +8,7 @@ function PostList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,6 +28,30 @@ function PostList() {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    const scrollStep = -window.scrollY / (500 / 15);
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
+  };
+
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     post.body.toLowerCase().includes(searchTerm.toLowerCase())
@@ -36,11 +61,11 @@ function PostList() {
     <div className="min-h-screen bg-[#FDFCFA]">
       <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
         <div className="absolute inset-0 opacity-10">
-          <svg className="absolute top-10 right-10 w-40 h-40" viewBox="0 0 100 100" fill="none">
+          <svg className="absolute top-10 right-10 w-40 h-40" viewBox="0 0 100 100" fill="none" aria-hidden="true">
             <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5"/>
             <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" strokeWidth="0.5"/>
           </svg>
-          <svg className="absolute bottom-10 left-10 w-32 h-32" viewBox="0 0 100 100" fill="none">
+          <svg className="absolute bottom-10 left-10 w-32 h-32" viewBox="0 0 100 100" fill="none" aria-hidden="true">
             <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.5"/>
             <path d="M50 15 L50 85 M15 50 L85 50" stroke="currentColor" strokeWidth="0.5"/>
           </svg>
@@ -62,8 +87,15 @@ function PostList() {
                     type="text"
                     placeholder="Search posts by title or content..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-6 py-4 pl-14 rounded-xl text-[#2C2416] placeholder-[#8B8378] bg-[#FBF8F3] focus:outline-none focus:ring-4 focus:ring-[#C4A57B]/50 transition-all shadow-xl border-2 border-[#E5DFD3]"
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value.length <= 200) {
+                        setSearchTerm(value);
+                      }
+                    }}
+                    maxLength={200}
+                    className="w-full px-6 py-4 pl-14 rounded-xl text-[#2C2416] placeholder-[#5C5346] bg-[#FBF8F3] focus:outline-none focus:ring-4 focus:ring-[#C4A57B]/50 transition-all shadow-xl border-2 border-[#E5DFD3]"
+                    aria-label="Search posts by title or content"
                 />
                 <svg
                     className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#8B6F47]"
@@ -71,6 +103,7 @@ function PostList() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
+                    aria-hidden="true"
                 >
                     <path
                     strokeLinecap="round"
@@ -89,7 +122,7 @@ function PostList() {
         {loading && <Loading />}
 
         {error && !loading && (
-          <div className="bg-[#FBF8F3] border-2 border-[#C97D60] rounded-xl p-8 text-center shadow-lg">
+          <div className="bg-[#FBF8F3] border-2 border-[#C97D60] rounded-xl p-8 text-center shadow-lg" role="alert">
             <div className="text-[#C97D60] mb-4">
               <svg
                 className="w-16 h-16 mx-auto mb-3"
@@ -97,6 +130,7 @@ function PostList() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 strokeWidth="2"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -186,11 +220,12 @@ function PostList() {
               </div>
             )}
 
-            {filteredPosts.length > 6 && (
+            {showScrollTop && filteredPosts.length > 6 && (
               <div className="fixed bottom-8 right-8 z-40">
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={scrollToTop}
                   className="bg-gradient-to-br from-[#8B6F47] to-[#5C4033] hover:from-[#5C4033] hover:to-[#8B6F47] text-[#FBF8F3] p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 group"
+                  aria-label="Scroll to top of page"
                   title="Scroll to top"
                 >
                   <svg
@@ -199,6 +234,7 @@ function PostList() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     strokeWidth="2.5"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"

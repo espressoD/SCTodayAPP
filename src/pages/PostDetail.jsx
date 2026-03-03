@@ -8,7 +8,6 @@ function PostDetail() {
   const navigate = useNavigate();
   
   const [post, setPost] = useState(null);
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,13 +17,24 @@ function PostDetail() {
         setLoading(true);
         setError(null);
 
+        // Validate ID is a number between 1-100
+        const postId = parseInt(id, 10);
+        
+        if (isNaN(postId) || postId < 1 || postId > 100) {
+          setError('Invalid post ID. Please use a valid post number (1-100).');
+          setLoading(false);
+          return;
+        }
+
         // Fetch post data
-        const postData = await getPostById(id);
+        const postData = await getPostById(postId);
         setPost(postData);
 
       } catch (err) {
-        setError(err.message || 'Failed to fetch post');
-        console.error('Error fetching post:', err);
+        setError(err.message || 'Unable to load post. Please try again later.');
+        if (import.meta.env.DEV) {
+          console.error('Error fetching post:', err);
+        }
       } finally {
         setLoading(false);
       }
@@ -46,7 +56,7 @@ function PostDetail() {
   if (error) {
     return (
       <div className="min-h-screen bg-[#FDFCFA] flex items-center justify-center p-4">
-        <div className="max-w-lg w-full bg-[#FBF8F3] rounded-xl shadow-xl p-8 text-center border-2 border-[#E5DFD3]">
+        <div className="max-w-lg w-full bg-[#FBF8F3] rounded-xl shadow-xl p-8 text-center border-2 border-[#E5DFD3]" role="alert">
           <div className="text-[#C97D60] mb-6">
             <div className="mb-4 inline-block p-5 bg-[#F5E6D3] rounded-full">
               <svg
@@ -55,6 +65,7 @@ function PostDetail() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 strokeWidth="2"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -89,7 +100,7 @@ function PostDetail() {
     <div className="min-h-screen bg-[#FDFCFA]">
       <div className="relative bg-gradient-to-br from-[#8B6F47] via-[#6B7553] to-[#5C4033] text-[#FBF8F3] overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
         <div className="absolute inset-0 opacity-10">
-          <svg className="absolute top-5 right-10 w-32 h-32" viewBox="0 0 100 100" fill="none">
+          <svg className="absolute top-5 right-10 w-32 h-32" viewBox="0 0 100 100" fill="none" aria-hidden="true">
             <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5"/>
             <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" strokeWidth="0.5"/>
           </svg>
@@ -141,7 +152,7 @@ function PostDetail() {
                 <span className="text-sm text-[#5C5346]">Post ID: <strong className="text-[#5C4033]">{post.id}</strong></span>
               </div>
               <div className="flex items-center gap-2 bg-[#F5E6D3] px-4 py-2 rounded-lg border border-[#E5DFD3]">
-                <svg className="w-5 h-5 text-[#8B6F47]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#8B6F47]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                 </svg>
                 <span className="text-sm text-[#5C5346]">User ID: <strong className="text-[#5C4033]">{post.userId}</strong></span>
@@ -162,9 +173,6 @@ function PostDetail() {
           </div>
         </article>
 
-        
-        
-
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <Link
             to="/"
@@ -172,7 +180,7 @@ function PostDetail() {
           >
             <span className="inline-flex items-center gap-2 justify-center">
                 Back to List
-              <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </span>
